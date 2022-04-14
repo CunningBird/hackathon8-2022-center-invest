@@ -8,13 +8,25 @@ import org.springframework.web.bind.annotation.RestController
 @RestController
 class CatController {
 
+    private val cats = mutableListOf(
+        "Ricardo",
+        "Van",
+        "Billy",
+        "Felix"
+    )
+
     @GetMapping("/test")
     fun testCat(@RequestParam name: String): String {
-        return "Котик $name говорит: Мяу"
+        return if (cats.contains(name)) "Котик $name говорит: Мяу" else "Такого котика нет"
     }
 
     @PostMapping("/buy")
     fun buyCat(@RequestParam name: String): String {
-        return "Вы купили котика: $name"
+        return if (cats.contains(name)) {
+            cats.remove(name)
+            "Вы купили котика: $name"
+        } else {
+            "Такого котика нет"
+        }
     }
 }
