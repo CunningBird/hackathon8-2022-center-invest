@@ -12,6 +12,10 @@ class CatService {
         "Felix"
     )
 
+    fun getAllCats(): List<String> {
+        return cats
+    }
+
     fun testCat(name: String): String {
         return if (cats.contains(name)) "Котик $name говорит: Мяу" else "Такого котика нет"
     }

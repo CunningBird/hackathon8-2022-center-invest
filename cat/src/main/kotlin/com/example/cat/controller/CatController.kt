@@ -11,6 +11,11 @@ class CatController(
     private val service: CatService
 ) {
 
+    @GetMapping("/list")
+    fun list(): List<String> {
+        return service.getAllCats()
+    }
+
     @GetMapping("/test")
     fun testCat(@RequestParam name: String): String {
         return service.testCat(name)
