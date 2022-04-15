@@ -6,28 +6,28 @@ import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.context.SpringBootTest
 
 @SpringBootTest
-class CatClientTest {
+class GarageClientTest {
 
     @Autowired
-    private lateinit var client: CatClient
+    private lateinit var client: GarageClient
 
     @Test
     fun test() {
-        val listExpected = listOf("Ricardo", "Billy", "Van", "Felix")
+        val listExpected = listOf("Маленький", "Средний", "Большой", "Очень Большой")
         val listActual = client.list()
         Assertions.assertEquals(listExpected, listActual)
 
-        val name = "Ricardo"
+        val title = "Средний"
 
-        val testExpected = "Котик $name говорит: Мяу"
-        val testActual = client.testCat(name)
+        val testExpected = "Гараж $title говорит: Бррр"
+        val testActual = client.testGarage(title)
         Assertions.assertEquals(testExpected, testActual)
 
-        val buyExpected = "Вы купили котика: $name"
-        val buyActual = client.buyCat(name)
+        val buyExpected = "Вы купили гараж: $title"
+        val buyActual = client.buyGarage(title)
         Assertions.assertEquals(buyExpected, buyActual)
 
-        val expected = listOf("Billy", "Van", "Felix")
+        val expected = listOf("Маленький", "Большой", "Очень Большой")
         val actual = client.list()
         Assertions.assertEquals(expected, actual)
     }
