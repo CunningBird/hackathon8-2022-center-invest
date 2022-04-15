@@ -1,0 +1,19 @@
+server:
+  port: 8079
+
+spring:
+  cloud:
+    gateway:
+      routes:
+        - id: cat
+          uri: http://localhost:8077
+          predicates:
+            - Path=/cat/**
+          filters:
+            - StripPrefix=1
+        - id: garage
+          uri: http://localhost:8078
+          predicates:
+            - Path=/garage/**
+          filters:
+            - StripPrefix=1
